@@ -20,6 +20,3 @@ class Bill(models.Model):
     class Meta:
         ordering = ('created_date',)
 
-    # def __unicode__(self):
-    #     return self.person.name + ' ' + str(self.amount) + ' ' + str(self.date)
-
