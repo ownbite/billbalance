@@ -1,0 +1,14 @@
+# -*- mode: ruby -*-
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.define "web1" do |web1|
+    web1.vm.box = "precise32"
+    web1.vm.box_url = "http://files.vagrantup.com/precise32.box"
+    web1.vm.hostname = "web1"
+
+    web1.vm.network "private_network", ip: "10.0.0.11"
+  end
+end
