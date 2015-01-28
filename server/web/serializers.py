@@ -12,13 +12,13 @@ from web.models import Bill
 class BillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bill
-        fields = ('id', 'category', 'person', 'amount', 'description')
+        fields = ('id', 'amount', 'description')
 
-    def create(self, validated_data):
-        """
-        Create and return a new `Bill` instance, given the validated data.
-        """
-        return Bill.objects.create(**validated_data)
+    # def create(self, validated_data):
+    #     """
+    #     Create and return a new `Bill` instance, given the validated data.
+    #     """
+    #     return Bill.objects.create(**validated_data)
 
     # def update(self, instance, validated_data):
     #     """

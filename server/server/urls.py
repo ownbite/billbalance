@@ -1,12 +1,11 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'server.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+from web import views
 
-    url(r'^', include('web.urls')),
+urlpatterns = patterns('',
+    url(r'^bill/$', views.bill_list),
+    url(r'^bill/(?P<pk>[0-9]+)/$', views.bill_detail),
 
     url(r'^admin/', include(admin.site.urls)),
 )
