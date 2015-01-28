@@ -5,8 +5,8 @@ from django.contrib import admin
 from web import views
 
 urlpatterns = patterns('',
-    url(r'^bill/$', views.bill_list),
-    url(r'^bill/(?P<pk>[0-9]+)/$', views.bill_detail),
+    url(r'^bill/$', views.BillList.as_view()),
+    url(r'^bill/(?P<pk>[0-9]+)/$', views.BillDetail.as_view()),
 
     url(r'^admin/', include(admin.site.urls)),
 )
