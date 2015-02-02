@@ -1,20 +1,20 @@
-from django.forms import widgets
 from rest_framework import serializers
 from web.models import Bill
 from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
-    bills = serializers.PrimaryKeyRelatedField(many=True, queryset=Bill.objects.all())
-
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'bills')
-
-class BillSerializer(serializers.ModelSerializer):
+class BillSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Bill
-        fields = ('id', 'amount', 'description', 'owner')
+        fields = ('url', 'amount', 'description', 'owner')
 
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    bills = serializers.HyperlinkedRelatedField(many=True,
+                                                view_name='bill-detail',
+                                                queryset=Bill.objects.all())
+
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'bills')
