@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from web.models import Bill
+from web.models import Bill, Node
 from django.contrib.auth.models import User
 
 
@@ -18,3 +18,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('url', 'username', 'bills')
+
+class NodeSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Node
+        fields = ('url', 'parentNode', 'name', 'description', 'subnodes')
+

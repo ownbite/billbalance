@@ -7,6 +7,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register(r'bills', views.BillViewSet)
 router.register(r'users', views.UserViewSet)
+router.register(r'nodes', views.NodeViewSet)
 
 urlpatterns = patterns('',
     url(r'^api/', include(router.urls)),

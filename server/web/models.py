@@ -16,3 +16,10 @@ class Bill(models.Model):
     class Meta:
         ordering = ('created_date',)
 
+class Node(models.Model):
+    parentNode = models.ForeignKey('self',
+                                   blank=True,
+                                   null=True,
+                                   related_name='subnodes')
+    name = models.CharField(max_length=200)
+    description = models.CharField(max_length=500)
